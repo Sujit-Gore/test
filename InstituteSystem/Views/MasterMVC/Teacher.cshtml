@@ -1,0 +1,264 @@
+﻿
+@{
+    ViewBag.Title = "Teacher";
+    Layout = "~/Views/Shared/_MasterLayout.cshtml";
+}
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/css")
+    <script>
+        $(document).ready(function () {
+            clrdata();
+            DisplayTeacher();
+            $("#btnaddteacher").click(function () {
+                $("#teachermodal").modal("show");
+            })
+            $("#btnupdate").click(function () {
+                $("#teacherupdatemodal").modal("show");
+            })
+            $("#btnsubmit").click(function () {
+                $("#teacheraddmodal").modal("show");
+            })
+            $("#btnsubmit").click(function () {
+                AddTeacher();
+            })
+
+            $("#btnupdate").click(function () {
+                UpdateTeacher();
+            })
+            $("#btndelete").click(function () {
+                DeleteTeacher();
+            })
+            $("#btnclose").click(function () {
+                clrdata();
+            })
+        })
+        function DeleteTeacher() {
+            var r = $("#techid").val();
+            $.ajax({
+                url: 'https://localhost:44325/api/teacher' + r,
+                method: 'delete',
+                contentType: 'application/json',
+                success: function (resp) {
+
+                    DisplayTeacher();
+                    clrdata();
+                }
+            })
+        }
+        function UpdateTeacher() {
+            var i = $("#techid").val();
+            var n = $("#techname").val();
+            var e = $("#techemail").val();
+            var a = $("#techaddress").val();
+            var m = $("#techmobile").val();
+            var s = $("#techsubject").val();
+            var st = { "tech_id": i, "tech_name": n, "tech_emailaddress": e, "tech_address": a, "tech_mobilenumber": m, "subject_id": s };
+            $.ajax({
+                url: 'https://localhost:44325/api/teacher',
+                method: 'put',
+                data: JSON.stringify(st),
+                contentType: 'application/json',
+                success: function (resp) {
+
+                    DisplayTeacher();
+                    clrdata();
+                }
+            })
+
+        }
+
+        function AddTeacher() {
+            var n = $("#techname").val();
+            var e = $("#techemail").val();
+            var a = $("#techaddress").val();
+            var m = $("#techmobile").val();
+            var s = $("#techsubject").val();
+            var st = { "tech_name": n, "tech_emailaddress": e, "tech_address": a, "tech_mobilenumber": m, "subject_id": s };
+            $.ajax({
+                url: 'https://localhost:44325/api/teacher',
+                method: 'post',
+                data: JSON.stringify(st),
+                contentType: 'application/json',
+                success: function (resp) {
+
+                    DisplayTeacher();
+                    clrdata();
+                }
+            })
+        }
+
+        function DisplayTeacher() {
+            $.ajax({
+                url: 'https://localhost:44325/api/teacher',
+                method: 'get',
+                contentType: 'application/json',
+                success: function (resp) {
+                    $("#tbldata").empty();
+                    $.each(resp, function (i, d) {
+                        $("#tbldata").append("<tr><td>" + (i + 1) + "</td><td>" + d.tech_name + "</td><td>" + d.tech_emailaddress + "</td><td>" + d.tech_address + "</td><td>" + d.tech_mobilenumber + "</td><td>" + d.subject_id +"</td><td>"+d.subject_name + "</td><td><input type='button' value='View' onclick='ViewTeacher(" + d.tech_id + ")'/></td></tr>");
+                    })
+
+                }
+            })
+        }
+
+        function ViewTeacher(r) {
+            $("#teachermodal").modal("show");
+            $.ajax({
+                url: 'https://localhost:44325/api/teacher/' + r,
+                method: 'get',
+                contentType: 'application/json',
+                success: function (resp) {
+                    $("#techid").val(resp.tech_id);
+                    $("#techname").val(resp.tech_name);
+                    $("#techemail").val(resp.tech_emailaddress);
+                    $("#techaddress").val(resp.tech_address);
+                    $("#techmobile").val(resp.tech_mobilenumber);
+                    $("#techsubject").val(resp.subject_id);
+                    $("#btnupdate").show();
+                    $("#btndelete").show();
+                    $("#btnsubmit").hide();
+
+                }
+            })
+
+
+        }
+        function clrdata() {
+            $("#techid").val("");
+            $("#techname").val("");
+            $("#techemail").val("");
+            $("#techaddress").val("");
+            $("#techmobile").val("");
+            $("#btnsubmit").show();
+            $("#btnupdate").hide();
+            $("#btndelete").hide();
+            $("#teachermodal").modal("hide");
+        }
+
+    </script>
+</head>
+<body>
+    <div>
+        <input type="button" value="Add Teacher" class="btn btn-secondary" id="btnaddteacher" />
+        <br />
+        <br />
+        <div class="modal fade" id="teachermodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+
+                        <h4>Teacher Form</h4>
+                    </div>
+                    <div class="modal-body">
+
+                        <div class="form-group">
+                            <label>Sr No</label>
+                            <input type="text" id="techid" class="form-control" disabled />
+                        </div>
+                        <div class="form-group">
+                            <label>Teacher Name</label>
+                            <input type="text" id="techname" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="text" id="techemail" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Address</label>
+                            <input type="text" id="techaddress" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Mobile Number</label>
+                            <input type="text" id="techmobile" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <label>Subject Id</label>
+                            <input type="text" id="techsubject" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="panel-footer">
+                        <input type="button" value="Submit" id="btnsubmit" class="btn btn-primary" />
+                        <input type="button" value="Update" id="btnupdate" class="btn btn-info" />
+                        <input type="button" value="Delete" id="btndelete" class="btn btn-warning" />
+                        <input type="button" value="Close" id="btnclose" class="btn btn-danger" />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div class="modal fade" id="teacherupdatemodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+
+                        <h4>Success Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Teacher Update Successfully !!</h3>
+
+                    </div>
+                    <div class="panel-footer">
+                        <input type="button" value="OK" id="btnclose" class="btn btn-primary" data-dismiss="modal" />
+                        @*<button class="close" data-dismiss="modal"></button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="teacheraddmodal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button class="close" data-dismiss="modal"><span>&times;</span></button>
+
+                        <h4>Success Message</h4>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Teacher Add Successfully !!</h3>
+
+                    </div>
+                    <div class="panel-footer">
+                        <input type="button" value="Ok" id="btnclose" class="btn btn-primary" data-dismiss="modal" />
+                        @*<button class="close" data-dismiss="modal"></button>*@
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <div style="height:500px;overflow:scroll">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>Sr No</td>
+                            <td>Teacher Name</td>
+                            <td>Email Address</td>
+                            <td>Address</td>
+                            <td>Mobile Number</td>
+                            <td>Subject Id</td>
+                            <td>Subject Name</td>
+                            <td>Action</td>
+
+                        </tr>
+                    </thead>
+                    <tbody id="tbldata">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InstituteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="InstituteEntities" annotation:LazyLoadingEnabled="true">
+    <FunctionImport Name="sp_fetch_student" ReturnType="Collection(InstituteModel.sp_fetch_student_Result)">
+      <Parameter Name="stud_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fetch_subject" ReturnType="Collection(InstituteModel.sp_fetch_subject_Result)">
+      <Parameter Name="sub_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fetch_subtech" ReturnType="Collection(InstituteModel.sp_fetch_subtech_Result)">
+      <Parameter Name="subtech_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_fetch_teacher" ReturnType="Collection(InstituteModel.sp_fetch_teacher_Result)">
+      <Parameter Name="tech_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_student">
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="stud_id" Mode="In" Type="Int32" />
+      <Parameter Name="stud_name" Mode="In" Type="String" />
+      <Parameter Name="stud_email" Mode="In" Type="String" />
+      <Parameter Name="stud_address" Mode="In" Type="String" />
+      <Parameter Name="stud_mobilenumber" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_subject">
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="sub_id" Mode="In" Type="Int32" />
+      <Parameter Name="sub_name" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_subtech">
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="subtech_id" Mode="In" Type="Int32" />
+      <Parameter Name="sub_id" Mode="In" Type="Int32" />
+      <Parameter Name="tech_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_teacher">
+      <Parameter Name="type" Mode="In" Type="String" />
+      <Parameter Name="teacher_id" Mode="In" Type="Int32" />
+      <Parameter Name="teacher_name" Mode="In" Type="String" />
+      <Parameter Name="teacher_email" Mode="In" Type="String" />
+      <Parameter Name="teacher_address" Mode="In" Type="String" />
+      <Parameter Name="teacher_mobilenumber" Mode="In" Type="String" />
+      <Parameter Name="subject_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="sp_fetch_student_Result">
+    <Property Type="Int32" Name="stud_id" Nullable="false" />
+    <Property Type="String" Name="Stud_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="stud_emailaddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="stud_address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="stud_mobilenumber" Nullable="true" MaxLength="20" />
+  </ComplexType>
+  <ComplexType Name="sp_fetch_subject_Result">
+    <Property Type="Int32" Name="subject_id" Nullable="false" />
+    <Property Type="String" Name="subject_name" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_fetch_subtech_Result">
+    <Property Type="Int32" Name="subtech_id" Nullable="false" />
+    <Property Type="Int32" Name="subject_id" Nullable="false" />
+    <Property Type="Int32" Name="tech_id" Nullable="false" />
+    <Property Type="String" Name="subject_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="tech_name" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_fetch_teacher_Result">
+    <Property Type="Int32" Name="tech_id" Nullable="false" />
+    <Property Type="String" Name="tech_name" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="tech_address" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="tech_emailaddress" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="tech_mobilenumber" Nullable="true" MaxLength="20" />
+    <Property Type="Int32" Name="subject_id" Nullable="false" />
+    <Property Type="String" Name="subject_name" Nullable="true" MaxLength="100" />
+  </ComplexType>
+</Schema>

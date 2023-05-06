@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InstituteModelStoreContainer" CdmEntityContainer="InstituteEntities">
+    <FunctionImportMapping FunctionImportName="sp_fetch_student" FunctionName="InstituteModel.Store.sp_fetch_student">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstituteModel.sp_fetch_student_Result">
+          <ScalarProperty Name="stud_id" ColumnName="stud_id" />
+          <ScalarProperty Name="Stud_name" ColumnName="Stud_name" />
+          <ScalarProperty Name="stud_emailaddress" ColumnName="stud_emailaddress" />
+          <ScalarProperty Name="stud_address" ColumnName="stud_address" />
+          <ScalarProperty Name="stud_mobilenumber" ColumnName="stud_mobilenumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_fetch_subject" FunctionName="InstituteModel.Store.sp_fetch_subject">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstituteModel.sp_fetch_subject_Result">
+          <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+          <ScalarProperty Name="subject_name" ColumnName="subject_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_fetch_subtech" FunctionName="InstituteModel.Store.sp_fetch_subtech">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstituteModel.sp_fetch_subtech_Result">
+          <ScalarProperty Name="subtech_id" ColumnName="subtech_id" />
+          <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+          <ScalarProperty Name="tech_id" ColumnName="tech_id" />
+          <ScalarProperty Name="subject_name" ColumnName="subject_name" />
+          <ScalarProperty Name="tech_name" ColumnName="tech_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_fetch_teacher" FunctionName="InstituteModel.Store.sp_fetch_teacher">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="InstituteModel.sp_fetch_teacher_Result">
+          <ScalarProperty Name="tech_id" ColumnName="tech_id" />
+          <ScalarProperty Name="tech_name" ColumnName="tech_name" />
+          <ScalarProperty Name="tech_address" ColumnName="tech_address" />
+          <ScalarProperty Name="tech_emailaddress" ColumnName="tech_emailaddress" />
+          <ScalarProperty Name="tech_mobilenumber" ColumnName="tech_mobilenumber" />
+          <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+          <ScalarProperty Name="subject_name" ColumnName="subject_name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_student" FunctionName="InstituteModel.Store.sp_student" />
+    <FunctionImportMapping FunctionImportName="sp_subject" FunctionName="InstituteModel.Store.sp_subject" />
+    <FunctionImportMapping FunctionImportName="sp_subtech" FunctionName="InstituteModel.Store.sp_subtech" />
+    <FunctionImportMapping FunctionImportName="sp_teacher" FunctionName="InstituteModel.Store.sp_teacher" />
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InstituteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <Function Name="sp_fetch_student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="stud_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_fetch_subject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="sub_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_fetch_subtech" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="subtech_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_fetch_teacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="tech_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_student" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="stud_id" Type="int" Mode="In" />
+    <Parameter Name="stud_name" Type="varchar" Mode="In" />
+    <Parameter Name="stud_email" Type="varchar" Mode="In" />
+    <Parameter Name="stud_address" Type="varchar" Mode="In" />
+    <Parameter Name="stud_mobilenumber" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_subject" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="sub_id" Type="int" Mode="In" />
+    <Parameter Name="sub_name" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_subtech" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="subtech_id" Type="int" Mode="In" />
+    <Parameter Name="sub_id" Type="int" Mode="In" />
+    <Parameter Name="tech_id" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_teacher" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="type" Type="varchar" Mode="In" />
+    <Parameter Name="teacher_id" Type="int" Mode="In" />
+    <Parameter Name="teacher_name" Type="varchar" Mode="In" />
+    <Parameter Name="teacher_email" Type="varchar" Mode="In" />
+    <Parameter Name="teacher_address" Type="varchar" Mode="In" />
+    <Parameter Name="teacher_mobilenumber" Type="varchar" Mode="In" />
+    <Parameter Name="subject_id" Type="int" Mode="In" />
+  </Function>
+  <EntityContainer Name="InstituteModelStoreContainer" />
+</Schema>

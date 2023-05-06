@@ -1,0 +1,12 @@
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\bin\Debug\DatabaseOperation.dll.config
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\bin\Debug\DatabaseOperation.dll
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\bin\Debug\DatabaseOperation.pdb
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\bin\Debug\EntityFramework.dll
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\bin\Debug\EntityFramework.xml
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\obj\Debug\DatabaseOperation.csproj.AssemblyReference.cache
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\obj\Debug\DatabaseOperation.csproj.CoreCompileInputs.cache
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\obj\Debug\DatabaseOperation.csproj.CopyComplete
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\obj\Debug\DatabaseOperation.dll
+C:\Users\sujit\source\repos\InstituteSystem\DatabaseOperation\obj\Debug\DatabaseOperation.pdb
